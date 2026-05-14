@@ -42,3 +42,17 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+class AnalyticsEvent(models.Model):
+    EVENT_TYPES = (
+        ('VIEW', 'Product View'),
+        ('ADD_TO_CART', 'Add to Cart'),
+        ('PURCHASE', 'Purchase'),
+    )
+    event_type = models.CharField(max_length=20, choices=EVENT_TYPES)
+    menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE, null=True, blank=True)
+    session_id = models.CharField(max_length=100, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.event_type} - {self.menu_item.name if self.menu_item else 'General'}"

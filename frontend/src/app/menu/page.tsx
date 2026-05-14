@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import api from '@/lib/api';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCart } from '@/lib/CartContext';
 
 interface MenuItem {
   id: number;
@@ -11,6 +12,7 @@ interface MenuItem {
   description: string;
   price: string;
   category: number;
+  image_url?: string;
 }
 
 interface Category {
@@ -23,6 +25,8 @@ interface Category {
 export default function MenuPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
+  const { addToCart, items: cartItems } = useCart();
+  const [addedItems, setAddedItems] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
     api.get('categories/')
@@ -80,8 +84,31 @@ export default function MenuPage() {
                   <p className="text-gray-500 text-sm mb-6 leading-relaxed">
                     {item.description}
                   </p>
-                  <button className="w-full py-3 bg-gray-50 text-gray-700 rounded-xl font-semibold hover:bg-orange-600 hover:text-white transition-all flex items-center justify-center gap-2">
-                    Add to Order
+                  <button
+                    onClick={() => {
+                      addToCart(item);
+                      setAddedItems({ ...addedItems, [item.id]: true });
+                      setTimeout(() => {
+                        setAddedItems(prev => ({ ...prev, [item.id]: false }));
+                      }, 2000);
+                    }}
+                    className={`w-full py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 ${
+                      addedItems[item.id]
+                        ? "bg-green-100 text-green-700"
+                        : "bg-gray-50 text-gray-700 hover:bg-orange-600 hover:text-white"
+                    }`}
+                  >
+                    {addedItems[item.id] ? (
+                      <>
+                        <Check size={18} />
+                        Added
+                      </>
+                    ) : (
+                      <>
+                        <ShoppingCart size={18} />
+                        Add to Order
+                      </>
+                    )}
                   </button>
                 </motion.div>
               ))}

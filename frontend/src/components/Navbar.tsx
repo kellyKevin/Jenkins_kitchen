@@ -3,9 +3,13 @@
 import Link from 'next/link';
 import { ShoppingCart, Menu as MenuIcon, X } from 'lucide-react';
 import { useState } from 'react';
+import { useCart } from '@/lib/CartContext';
+import CartDrawer from './CartDrawer';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { itemCount } = useCart();
 
   return (
     <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
@@ -25,10 +29,18 @@ export default function Navbar() {
             <Link href="/news" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">News</Link>
             <Link href="/location" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">Location</Link>
             <Link href="/contact" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">Contact</Link>
-            <Link href="/order" className="bg-orange-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-orange-700 transition-all flex items-center gap-2">
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="bg-orange-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-orange-700 transition-all flex items-center gap-2 relative"
+            >
               <ShoppingCart size={18} />
-              Order Now
-            </Link>
+              <span>Order Now</span>
+              {itemCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-gray-900 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
+                  {itemCount}
+                </span>
+              )}
+            </button>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -38,6 +50,8 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
 
       {/* Mobile Menu */}
       {isOpen && (

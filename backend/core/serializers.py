@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, MenuItem, Order, OrderItem, News
+from .models import Category, MenuItem, Order, OrderItem, News, AnalyticsEvent
 
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,4 +34,9 @@ class OrderSerializer(serializers.ModelSerializer):
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
+        fields = '__all__'
+
+class AnalyticsEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AnalyticsEvent
         fields = '__all__'
