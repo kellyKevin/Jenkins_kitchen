@@ -20,6 +20,7 @@ export default function Footer() {
               <li><Link href="/order" className="text-gray-400 hover:text-orange-500 transition-colors">Order Online</Link></li>
               <li><Link href="/news" className="text-gray-400 hover:text-orange-500 transition-colors">Latest News</Link></li>
               <li><Link href="/promotions" className="text-gray-400 hover:text-orange-500 transition-colors">Promotions</Link></li>
+              <li><Link href="/location" className="text-gray-400 hover:text-orange-500 transition-colors">Location</Link></li>
             </ul>
           </div>
           <div>
