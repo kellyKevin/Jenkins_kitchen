@@ -35,7 +35,7 @@ export default function PromotionsPage() {
         <div className="text-center mb-20">
           <h1 className="font-playfair text-5xl font-bold mb-4">Exclusive Offers</h1>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Delicious deals tailored just for you. Grab them while they're hot!
+            Delicious deals tailored just for you. Grab them while they&apos;re hot!
           </p>
         </div>
 
