@@ -19,23 +19,29 @@ Welcome to the **JENIKS KITCHEN** website repository. This project showcases a m
 1. **Homepage**: A welcoming landing page with key information about the eatery.
 2. **Navigation Bar**: Clean and intuitive navigation with links to all main sections (Menu, About Us, Promotions, News, Locations, Contact Us, and Order Online).
 3. **Menu**: Display of meals with prices in a professional format.
-4. **Order Online**: Allows customers to place their orders conveniently online.
-5. **News**: Updates on promotions, events, and other news from the eatery.
-6. **Promotions**: A dedicated section for current promotions.
-7. **About Us**: Detailed information about JENIKS KITCHEN, including vision, mission, and history.
-8. **Locations**: Integrated Google Maps showing the eatery's locations for easy access.
-9. **Contact Us**: Includes clickable email and social media links for quick access to communication and social platforms.
-10. **Responsive Design**: Fully responsive, adapting perfectly across various devices (desktop, tablet, mobile).
-11. **Interactive Elements**: JavaScript enhances user interactions and improves user experience.
+4. **Cart System**: Fully functional shopping cart that allows users to add multiple items, update quantities, and persist their order.
+5. **Smart Recommendations**: Innovative AI-driven (popularity-based) product recommendations on the homepage.
+6. **Order Online**: Allows customers to place their orders conveniently online with a multi-item checkout process.
+7. **Analytics & Tracking**: Backend tracking of product views, add-to-cart actions, and purchases for future prediction analysis.
+8. **News**: Updates on promotions, events, and other news from the eatery.
+9. **Promotions**: A dedicated section for current promotions.
+10. **About Us**: Detailed information about JENIKS KITCHEN, including vision, mission, and history.
+11. **Locations**: Integrated Google Maps showing the eatery's locations for easy access.
+12. **Contact Us**: Includes clickable email and social media links for quick access to communication and social platforms.
+13. **Responsive Design**: Fully responsive, adapting perfectly across various devices (desktop, tablet, mobile).
+14. **Innovative UI**: Smooth animations and modern design using Framer Motion and Tailwind CSS.
 
 ---
 
 ## Tech Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6)
+- **Frontend**: Next.js 15 (React 19), Tailwind CSS, Framer Motion, Lucide React
+- **Backend**: Django 6.0, Django REST Framework, PostgreSQL
+- **DevOps**: Docker, Docker Compose, Vercel
 - **Libraries/Frameworks**: 
-  - Google Maps API for Locations
-  - FontAwesome for Social Media Icons
+  - Axios for API communication
+  - Lucide React for modern iconography
+  - Framer Motion for innovative animations
 - **Version Control**: Git & GitHub
 
 ---

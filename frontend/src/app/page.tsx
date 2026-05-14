@@ -1,10 +1,27 @@
 "use client";
 
 import Link from 'next/link';
-import { ArrowRight, Utensils, Clock, MapPin } from 'lucide-react';
+import { ArrowRight, Utensils, Clock, MapPin, Star, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import api from '@/lib/api';
+
+interface MenuItem {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+}
 
 export default function Home() {
+  const [recommended, setRecommended] = useState<MenuItem[]>([]);
+
+  useEffect(() => {
+    api.get('predictions/')
+      .then(res => setRecommended(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
@@ -96,6 +113,54 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Recommended Section */}
+      {recommended.length > 0 && (
+        <section className="py-24 bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+              <div>
+                <div className="flex items-center gap-2 text-orange-600 font-bold mb-2 uppercase tracking-widest text-sm">
+                  <TrendingUp size={16} />
+                  <span>Popular Choices</span>
+                </div>
+                <h2 className="font-playfair text-4xl md:text-5xl font-bold">Recommended for You</h2>
+              </div>
+              <Link href="/menu" className="text-orange-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                Full Menu <ArrowRight size={20} />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {recommended.slice(0, 3).map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-gray-50 rounded-[2.5rem] p-8 border border-gray-100 hover:border-orange-200 hover:shadow-2xl transition-all group relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 p-6">
+                    <Star className="text-orange-400 fill-orange-400" size={20} />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 pr-8">{item.name}</h3>
+                  <p className="text-gray-600 mb-8 line-clamp-2">{item.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-black text-gray-900">${item.price}</span>
+                    <Link
+                      href="/menu"
+                      className="bg-white text-gray-900 w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-orange-600 group-hover:text-white transition-all"
+                    >
+                      <ArrowRight size={20} />
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-20">
