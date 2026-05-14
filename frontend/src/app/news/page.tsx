@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import api from '@/lib/api';
+import { motion } from 'framer-motion';
 
 interface NewsItem {
   id: number;
@@ -38,8 +39,15 @@ export default function NewsPage() {
         <h1 className="font-playfair text-5xl font-bold mb-16 text-center">Latest Updates</h1>
 
         <div className="space-y-16">
-          {news.map((item) => (
-            <article key={item.id} className="border-b border-gray-100 pb-16 last:border-0">
+          {news.map((item, index) => (
+            <motion.article
+              key={item.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="border-b border-gray-100 pb-16 last:border-0"
+            >
               <span className="text-orange-600 font-semibold text-sm uppercase tracking-widest mb-4 block">
                 {new Date(item.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </span>
@@ -49,7 +57,7 @@ export default function NewsPage() {
               <div className="text-gray-600 leading-relaxed text-lg">
                 {item.content}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>

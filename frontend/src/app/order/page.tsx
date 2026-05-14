@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import api from '@/lib/api';
 import { Send, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface MenuItem {
   id: number;
@@ -74,7 +75,11 @@ export default function OrderPage() {
 
   return (
     <div className="bg-gray-50 py-20 min-h-screen">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         <div className="bg-white rounded-[2rem] shadow-xl overflow-hidden">
           <div className="bg-orange-600 p-12 text-white text-center">
             <h1 className="text-4xl font-bold font-playfair mb-2">Order Online</h1>
@@ -148,7 +153,7 @@ export default function OrderPage() {
             </button>
           </form>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

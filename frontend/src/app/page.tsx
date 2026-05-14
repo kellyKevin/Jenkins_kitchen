@@ -1,5 +1,8 @@
+"use client";
+
 import Link from 'next/link';
 import { ArrowRight, Utensils, Clock, MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
@@ -13,14 +16,29 @@ export default function Home() {
         />
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6 max-w-2xl leading-tight">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="font-playfair text-5xl md:text-7xl font-bold mb-6 max-w-2xl leading-tight"
+          >
             Delicious Meals, <span className="text-orange-500">Made with Love</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-xl leading-relaxed">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-lg md:text-xl text-gray-200 mb-8 max-w-xl leading-relaxed"
+          >
             Discover our amazing dishes and enjoy an unforgettable dining experience.
             From our kitchen to your heart.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
             <Link href="/menu" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2">
               View Menu
               <Utensils size={20} />
@@ -29,7 +47,7 @@ export default function Home() {
               Our Story
               <ArrowRight size={20} />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -37,27 +55,44 @@ export default function Home() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center group">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center group"
+            >
               <div className="w-16 h-16 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <Utensils size={32} />
               </div>
               <h3 className="text-xl font-bold mb-4">Fresh Ingredients</h3>
               <p className="text-gray-600">We use only the finest, locally sourced organic produce for every dish.</p>
-            </div>
-            <div className="text-center group">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-center group"
+            >
               <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <Clock size={32} />
               </div>
               <h3 className="text-xl font-bold mb-4">Fast Delivery</h3>
               <p className="text-gray-600">Hungry? We ensure your food arrives hot and fresh in under 30 minutes.</p>
-            </div>
-            <div className="text-center group">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-center group"
+            >
               <div className="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <MapPin size={32} />
               </div>
               <h3 className="text-xl font-bold mb-4">Easy Pickup</h3>
               <p className="text-gray-600">Choose from 3 convenient locations across the city for quick pickup.</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

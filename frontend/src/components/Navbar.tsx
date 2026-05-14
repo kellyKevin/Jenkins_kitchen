@@ -21,7 +21,9 @@ export default function Navbar() {
             <Link href="/" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">Home</Link>
             <Link href="/about" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">About</Link>
             <Link href="/menu" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">Menu</Link>
+            <Link href="/promotions" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">Promotions</Link>
             <Link href="/news" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">News</Link>
+            <Link href="/location" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">Location</Link>
             <Link href="/contact" className="text-gray-600 hover:text-orange-600 transition-colors font-medium">Contact</Link>
             <Link href="/order" className="bg-orange-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-orange-700 transition-all flex items-center gap-2">
               <ShoppingCart size={18} />
@@ -44,7 +46,9 @@ export default function Navbar() {
             <Link href="/" className="block px-3 py-2 text-gray-600">Home</Link>
             <Link href="/about" className="block px-3 py-2 text-gray-600">About</Link>
             <Link href="/menu" className="block px-3 py-2 text-gray-600">Menu</Link>
+            <Link href="/promotions" className="block px-3 py-2 text-gray-600">Promotions</Link>
             <Link href="/news" className="block px-3 py-2 text-gray-600">News</Link>
+            <Link href="/location" className="block px-3 py-2 text-gray-600">Location</Link>
             <Link href="/contact" className="block px-3 py-2 text-gray-600">Contact</Link>
             <Link href="/order" className="block px-3 py-2 text-orange-600 font-bold">Order Now</Link>
           </div>

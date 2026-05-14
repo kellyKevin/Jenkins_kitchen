@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import api from '@/lib/api';
-import { ShoppingPlus } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface MenuItem {
   id: number;
@@ -51,8 +52,15 @@ export default function MenuPage() {
           </p>
         </div>
 
-        {categories.map((category) => (
-          <div key={category.id} className="mb-20">
+        {categories.map((category, catIndex) => (
+          <motion.div
+            key={category.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: catIndex * 0.1 }}
+            className="mb-20"
+          >
             <div className="flex items-center gap-4 mb-8">
               <h2 className="text-3xl font-bold font-playfair">{category.name}</h2>
               <div className="h-px bg-gray-200 flex-1" />
@@ -60,7 +68,11 @@ export default function MenuPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {category.items.map((item) => (
-                <div key={item.id} className="bg-white p-6 rounded-3xl border border-gray-100 hover:shadow-xl transition-shadow group">
+                <motion.div
+                  key={item.id}
+                  whileHover={{ y: -5 }}
+                  className="bg-white p-6 rounded-3xl border border-gray-100 hover:shadow-xl transition-shadow group"
+                >
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold group-hover:text-orange-600 transition-colors">{item.name}</h3>
                     <span className="text-orange-600 font-bold text-lg">${item.price}</span>
@@ -71,10 +83,10 @@ export default function MenuPage() {
                   <button className="w-full py-3 bg-gray-50 text-gray-700 rounded-xl font-semibold hover:bg-orange-600 hover:text-white transition-all flex items-center justify-center gap-2">
                     Add to Order
                   </button>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
