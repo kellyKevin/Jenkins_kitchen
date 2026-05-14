@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import api from '@/lib/api';
 import { Send, CheckCircle2, ShoppingBag, Trash2, ArrowLeft } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { useCart } from '@/lib/CartContext';
 import Link from 'next/link';
 
@@ -49,7 +48,7 @@ export default function OrderPage() {
 
       clearCart();
       setSubmitted(true);
-    } catch (err) {
+    } catch {
       alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -61,7 +60,7 @@ export default function OrderPage() {
       <CheckCircle2 size={80} className="text-green-500 mb-6" />
       <h2 className="text-4xl font-bold font-playfair mb-4">Order Received!</h2>
       <p className="text-gray-600 text-lg mb-8 max-w-md">
-        Thank you for choosing JENIKS KITCHEN. We'll send a confirmation to your email shortly.
+        Thank you for choosing JENIKS KITCHEN. We&apos;ll send a confirmation to your email shortly.
       </p>
       <button
         onClick={() => setSubmitted(false)}

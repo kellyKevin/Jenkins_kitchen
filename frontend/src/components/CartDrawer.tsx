@@ -45,7 +45,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
                     <ShoppingBag size={40} className="text-gray-300" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Cart is empty</h3>
-                  <p className="text-gray-500 mb-8">Looks like you haven't added anything yet.</p>
+                  <p className="text-gray-500 mb-8">Looks like you haven&apos;t added anything yet.</p>
                   <button
                     onClick={onClose}
                     className="bg-orange-600 text-white px-8 py-3 rounded-full font-bold"
